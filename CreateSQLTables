@@ -11,7 +11,7 @@ FOREIGN KEY (building_name) REFERENCES Building (building_name));
 
 CREATE TABLE CurrentComputer (
 computerID int NOT NULL AUTO_INCREMENT,
-iteration int
+iteration int,
 motherboard NVARCHAR(50) NOT NULL,
 CPU NVARCHAR(50) NOT NULL,
 RAM int NOT NULL,
