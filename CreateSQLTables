@@ -9,9 +9,9 @@ building_name NVARCHAR(20) NOT NULL,
 PRIMARY KEY (room_number, building_name),
 FOREIGN KEY (building_name) REFERENCES Building (building_name));
 
-CREATE TABLE CurrentComputer (
-computerID int NOT NULL AUTO_INCREMENT,
-iteration int,
+CREATE TABLE Computer (
+computerID int NOT NULL,
+iteration int NOT NULL,
 motherboard NVARCHAR(50) NOT NULL,
 CPU NVARCHAR(50) NOT NULL,
 RAM int NOT NULL,
@@ -25,35 +25,19 @@ speaker NVARCHAR(30),
 webCamera NVARCHAR(30),
 room_number int NOT NULL,
 building_name NVARCHAR(20) NOT NULL,
-PRIMARY KEY (computerID),
-FOREIGN KEY (room_number) REFERENCES Room (room_number),
-FOREIGN KEY (building_name) REFERENCES Room (building_name));
-
-CREATE TABLE PreviousVer (
-computerID int NOT NULL,
-iteration int NOT NULL,
-motherboard NVARCHAR(50) NOT NULL,
-CPU NVARCHAR(50) NOT NULL,
-RAM integer NOT NULL,
-powerSupply int NOT NULL,
-keyboard NVARCHAR(30) NOT NULL,
-mouse NVARCHAR(30) NOT NULL,
-GPU NVARCHAR(30),
-DVDrom NVARCHAR(10),
-CPUheatsink NVARCHAR(10),
-speaker NVARCHAR(30),
-webCamera NVARCHAR(30),
 beginDate DATETIME NOT NULL,
 endDate DATETIME NOT NULL,
 PRIMARY KEY (computerID, iteration),
-FOREIGN KEY (computerID) references CurrentComputer (computerID));
+FOREIGN KEY (room_number) REFERENCES Room (room_number),
+FOREIGN KEY (building_name) REFERENCES Room (building_name));
 
 
-CREATE TABLE monitor (
+
+CREATE TABLE Monitor (
 monitorID INT NOT NULL AUTO_INCREMENT,
 computerID INT NOT NULL,
 Iteration INT NOT NULL,
-type NOT NULL,
+type NVARCHAR(10) NOT NULL,
 PRIMARY KEY (monitorID),
 FOREIGN KEY (computerID) REFERENCES CurrentComputer(computerID),
 FOREIGN KEY (iteration) REFERENCES CurrentComputer(iteration));
