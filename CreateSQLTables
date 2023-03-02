@@ -1,0 +1,99 @@
+
+CREATE TABLE Building (
+building_name NVARCHAR(20) NOT NULL,
+PRIMARY KEY (Building_name));
+
+CREATE TABLE Room (
+room_number integer NOT NULL,
+building_name NVARCHAR(20) NOT NULL,
+PRIMARY KEY (room_number, building_name),
+FOREIGN KEY (building_name) REFERENCES Building (building_name));
+
+CREATE TABLE CurrentComputer (
+computerID int NOT NULL AUTO_INCREMENT,
+iteration int
+motherboard NVARCHAR(50) NOT NULL,
+CPU NVARCHAR(50) NOT NULL,
+RAM int NOT NULL,
+powerSupply integer NOT NULL,
+keyboard NVARCHAR(30) NOT NULL,
+mouse NVARCHAR(30) NOT NULL,
+GPU NVARCHAR(30),
+DVDrom NVARCHAR(10),
+CPUheatsink NVARCHAR(10),
+speaker NVARCHAR(30),
+webCamera NVARCHAR(30),
+room_number int NOT NULL,
+building_name NVARCHAR(20) NOT NULL,
+PRIMARY KEY (computerID),
+FOREIGN KEY (room_number) REFERENCES Room (room_number),
+FOREIGN KEY (building_name) REFERENCES Room (building_name));
+
+CREATE TABLE PreviousVer (
+computerID int NOT NULL,
+iteration int NOT NULL,
+motherboard NVARCHAR(50) NOT NULL,
+CPU NVARCHAR(50) NOT NULL,
+RAM integer NOT NULL,
+powerSupply int NOT NULL,
+keyboard NVARCHAR(30) NOT NULL,
+mouse NVARCHAR(30) NOT NULL,
+GPU NVARCHAR(30),
+DVDrom NVARCHAR(10),
+CPUheatsink NVARCHAR(10),
+speaker NVARCHAR(30),
+webCamera NVARCHAR(30),
+beginDate DATETIME NOT NULL,
+endDate DATETIME NOT NULL,
+PRIMARY KEY (computerID, iteration)
+FOREIGN KEY (computerID) references CurrentComputer (computerID));
+
+
+CREATE TABLE Reservations (
+reservationID INT ZEROFILL NOT NULL AUTO_INCREMENT = 1,
+employeeID INT(10) NOT NULL,
+computerID INT() NOT NULL,
+startTime DATETIME() NOT NULL,
+endTime DATETIME() NOT NULL,
+PRIMARY KEY (reservationID),
+FOREIGN KEY (employeeID) REFERENCES User(employeeID),
+FOREIGN KEY (computerID) REFERENCES CurrentComputer(computerID));
+
+
+CREATE TABLE monitor (
+monitorID INT() ZEROFILL NOT NULL AUTO_INCREMENT=1,
+computerID INT() NOT NULL,
+Iteration INT() NOT NULL,
+type NOT NULL,
+PRIMARY KEY (monitorID),
+FOREIGN KEY (computerID) REFERENCES CurrentComputer(computerID),
+FOREIGN KEY (iteration) REFERENCES CurrentComputer(iteration));
+
+CREATE TABLE SecondaryMemory (
+memoryID INT() NOT NULL,
+computerID INT() NOT NULL,
+Iteration INT() NOT NULL,
+type VARCHAR(30) NOT NULL,
+size VARCHAR(30) NOT NULL,
+PRIMARY KEY (memoryID),
+FOREIGN KEY (computerID) REFERENCES CurrentComputer(computerID),
+FOREIGN KEY (iteration) REFERENCES CurrentComputer(iteration));
+
+CREATE TABLE User (
+employeeID INT(10) ZEROFILL NOT NULL AUTO_INCREMENT=1,
+Firstname CHAR(30) NOT NULL,
+Lastname CHAR(30) NOT NULL, 
+username NVARCHAR(30) NOT NULL UNIQUE,
+password NVARCHAR(30) NOT NULL,
+PRIMARY KEY (employeeID));
+
+CREATE TABLE Manager (
+employeeID INT(10),
+PRIMARY KEY (employeeID),
+FOREIGN KEY (employeeID) REFERENCES User(employeeID));
+
+CREATE TABLE Employee (
+employeeID INT(10), 
+AccessLevel VARCHAR(30) NOT NULL,
+PRIMARY KEY (employeeID),
+FOREIGN KEY employeeID REFERENCES User(employeeID));
