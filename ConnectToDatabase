@@ -13,6 +13,11 @@
    }
    echo "Connected successfully";
 
+//create a table
+$create_table_1 = "CREATE TABLE Building ( building_name NVARCHAR(20) 
+    NOT NULL, PRIMARY KEY (Building_name));";
+
+
 //close connection
 mysqli_close($conn);
 ?>
