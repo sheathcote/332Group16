@@ -45,34 +45,23 @@ speaker NVARCHAR(30),
 webCamera NVARCHAR(30),
 beginDate DATETIME NOT NULL,
 endDate DATETIME NOT NULL,
-PRIMARY KEY (computerID, iteration)
+PRIMARY KEY (computerID, iteration),
 FOREIGN KEY (computerID) references CurrentComputer (computerID));
 
 
-CREATE TABLE Reservations (
-reservationID INT ZEROFILL NOT NULL AUTO_INCREMENT = 1,
-employeeID INT(10) NOT NULL,
-computerID INT() NOT NULL,
-startTime DATETIME() NOT NULL,
-endTime DATETIME() NOT NULL,
-PRIMARY KEY (reservationID),
-FOREIGN KEY (employeeID) REFERENCES User(employeeID),
-FOREIGN KEY (computerID) REFERENCES CurrentComputer(computerID));
-
-
 CREATE TABLE monitor (
-monitorID INT() ZEROFILL NOT NULL AUTO_INCREMENT=1,
-computerID INT() NOT NULL,
-Iteration INT() NOT NULL,
+monitorID INT NOT NULL AUTO_INCREMENT,
+computerID INT NOT NULL,
+Iteration INT NOT NULL,
 type NOT NULL,
 PRIMARY KEY (monitorID),
 FOREIGN KEY (computerID) REFERENCES CurrentComputer(computerID),
 FOREIGN KEY (iteration) REFERENCES CurrentComputer(iteration));
 
 CREATE TABLE SecondaryMemory (
-memoryID INT() NOT NULL,
-computerID INT() NOT NULL,
-Iteration INT() NOT NULL,
+memoryID INT NOT NULL,
+computerID INT NOT NULL,
+Iteration INT NOT NULL,
 type VARCHAR(30) NOT NULL,
 size VARCHAR(30) NOT NULL,
 PRIMARY KEY (memoryID),
@@ -80,7 +69,7 @@ FOREIGN KEY (computerID) REFERENCES CurrentComputer(computerID),
 FOREIGN KEY (iteration) REFERENCES CurrentComputer(iteration));
 
 CREATE TABLE User (
-employeeID INT(10) ZEROFILL NOT NULL AUTO_INCREMENT=1,
+employeeID INT(10) NOT NULL AUTO_INCREMENT,
 Firstname CHAR(30) NOT NULL,
 Lastname CHAR(30) NOT NULL, 
 username NVARCHAR(30) NOT NULL UNIQUE,
@@ -97,3 +86,13 @@ employeeID INT(10),
 AccessLevel VARCHAR(30) NOT NULL,
 PRIMARY KEY (employeeID),
 FOREIGN KEY employeeID REFERENCES User(employeeID));
+
+CREATE TABLE Reservations (
+reservationID INT NOT NULL AUTO_INCREMENT,
+employeeID INT(10) NOT NULL,
+computerID INT NOT NULL,
+startTime DATETIME NOT NULL,
+endTime DATETIME NOT NULL,
+PRIMARY KEY (reservationID),
+FOREIGN KEY (employeeID) REFERENCES User(employeeID),
+FOREIGN KEY (computerID) REFERENCES CurrentComputer(computerID));
