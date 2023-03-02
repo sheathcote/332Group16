@@ -1,0 +1,18 @@
+<?php
+   $servername = "mydb.itap.purdue.edu";
+   $username = "g1126566";
+   $password = "WeLoveCorn!";
+   $dbname = "g1126566";
+
+//create connection
+   $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+//check connection
+   if (!$conn) {
+   die ("Connection failed: " . mysqli_connect_error());
+   }
+   echo "Connected successfully";
+
+//close connection
+mysqli_close($conn);
+?>
