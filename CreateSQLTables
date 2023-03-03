@@ -32,14 +32,15 @@ FOREIGN KEY (room_number) REFERENCES Room (room_number),
 FOREIGN KEY (building_name) REFERENCES Room (building_name));
 
 
+
 CREATE TABLE Monitor (
 monitorID INT NOT NULL AUTO_INCREMENT,
 computerID INT NOT NULL,
 iteration INT NOT NULL,
 type NVARCHAR(10) NOT NULL,
 PRIMARY KEY (monitorID),
-FOREIGN KEY (computerID) REFERENCES Computer(computerID),
-FOREIGN KEY (iteration) REFERENCES Computer(iteration));
+FOREIGN KEY (computerID) REFERENCES CurrentComputer(computerID),
+FOREIGN KEY (iteration) REFERENCES CurrentComputer(iteration));
 
 CREATE TABLE SecondaryMemory (
 memoryID INT NOT NULL,
@@ -48,8 +49,8 @@ iteration INT NOT NULL,
 type VARCHAR(30) NOT NULL,
 size VARCHAR(30) NOT NULL,
 PRIMARY KEY (memoryID),
-FOREIGN KEY (computerID) REFERENCES Computer(computerID),
-FOREIGN KEY (iteration) REFERENCES Computer(iteration));
+FOREIGN KEY (computerID) REFERENCES CurrentComputer(computerID),
+FOREIGN KEY (iteration) REFERENCES CurrentComputer(iteration));
 
 CREATE TABLE User (
 employeeID INT(10) NOT NULL AUTO_INCREMENT,
@@ -74,8 +75,10 @@ CREATE TABLE Reservations (
 reservationID INT NOT NULL AUTO_INCREMENT,
 employeeID INT(10) NOT NULL,
 computerID INT NOT NULL,
+iteration INT NOT NULL,
 startTime DATETIME NOT NULL,
 endTime DATETIME NOT NULL,
 PRIMARY KEY (reservationID),
 FOREIGN KEY (employeeID) REFERENCES User(employeeID),
-FOREIGN KEY (computerID) REFERENCES CurrentComputer(computerID));
+FOREIGN KEY (computerID) REFERENCES CurrentComputer(computerID),
+FOREIGN KEY (iteration) REFERENCES CurrentComputer(iteration));
