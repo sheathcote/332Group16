@@ -27,7 +27,7 @@ room_number int NOT NULL,
 building_name NVARCHAR(20) NOT NULL,
 beginDate DATETIME NOT NULL,
 endDate DATETIME NOT NULL,
-PRIMARY KEY (computerID, iteration),
+PRIMARY KEY (computerID,iteration),
 FOREIGN KEY (room_number) REFERENCES Room (room_number),
 FOREIGN KEY (building_name) REFERENCES Room (building_name));
 
