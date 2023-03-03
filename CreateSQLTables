@@ -39,8 +39,8 @@ computerID INT NOT NULL,
 iteration INT NOT NULL,
 type NVARCHAR(10) NOT NULL,
 PRIMARY KEY (monitorID),
-FOREIGN KEY (computerID) REFERENCES CurrentComputer(computerID),
-FOREIGN KEY (iteration) REFERENCES CurrentComputer(iteration));
+FOREIGN KEY (computerID) REFERENCES Computer(computerID),
+FOREIGN KEY (iteration) REFERENCES Computer(iteration));
 
 CREATE TABLE SecondaryMemory (
 memoryID INT NOT NULL,
@@ -49,8 +49,8 @@ iteration INT NOT NULL,
 type VARCHAR(30) NOT NULL,
 size VARCHAR(30) NOT NULL,
 PRIMARY KEY (memoryID),
-FOREIGN KEY (computerID) REFERENCES CurrentComputer(computerID),
-FOREIGN KEY (iteration) REFERENCES CurrentComputer(iteration));
+FOREIGN KEY (computerID) REFERENCES Computer(computerID),
+FOREIGN KEY (iteration) REFERENCES Computer(iteration));
 
 CREATE TABLE User (
 employeeID INT(10) NOT NULL AUTO_INCREMENT,
@@ -80,5 +80,5 @@ startTime DATETIME NOT NULL,
 endTime DATETIME NOT NULL,
 PRIMARY KEY (reservationID),
 FOREIGN KEY (employeeID) REFERENCES User(employeeID),
-FOREIGN KEY (computerID) REFERENCES CurrentComputer(computerID),
-FOREIGN KEY (iteration) REFERENCES CurrentComputer(iteration));
+FOREIGN KEY (computerID) REFERENCES Computer(computerID),
+FOREIGN KEY (iteration) REFERENCES Computer(iteration));
