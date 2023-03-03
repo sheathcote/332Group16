@@ -4,7 +4,7 @@ building_name NVARCHAR(20) NOT NULL,
 PRIMARY KEY (Building_name));
 
 CREATE TABLE Room (
-room_number integer NOT NULL,
+room_number int NOT NULL,
 building_name NVARCHAR(20) NOT NULL,
 PRIMARY KEY (room_number, building_name),
 FOREIGN KEY (building_name) REFERENCES Building (building_name));
@@ -15,7 +15,7 @@ iteration int NOT NULL,
 motherboard NVARCHAR(50) NOT NULL,
 CPU NVARCHAR(50) NOT NULL,
 RAM int NOT NULL,
-powerSupply integer NOT NULL,
+powerSupply int NOT NULL,
 keyboard NVARCHAR(30) NOT NULL,
 mouse NVARCHAR(30) NOT NULL,
 GPU NVARCHAR(30),
