@@ -189,3 +189,19 @@ VALUES (29,	'David',	'Painter',	'dpainter',	'password29');
 
 INSERT INTO User (employeeID,	Firstname,	Lastname,	username,	password)
 VALUES (30,	'Elaine',	'Painter',	'epainter',	'password30');
+
+
+#Manager Insert into statements
+INSERT INTO Manager (employeeID)
+VALUES (1), (2), (3);
+
+#Employee Insert into statements
+INSERT INTO Employee (employeeID, AccessLevel)
+VALUES (4, 1), (5, 3), (6, 1), (7, 1), (8, 1), (9, 2), (10, 1),
+(11, 1), (12, 1), (13, 2), (14, 2), (15, 2), (16, 2), (17, 3), (18, 3), (19, 3), (20, 3),
+(21, 3), (22, 3), (23, 2), (24, 2), (25, 1), (26, 3), (27, 3), (28, 1), (29, 2), (30, 2);
+
+
+
+
+
