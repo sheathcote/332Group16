@@ -1,3 +1,17 @@
+#Building INSERT INTO STATEMENT
+INSERT INTO Building
+VALUES ('main');
+
+#Rooms INSERT INTO STATEMENTS
+INSERT INTO Room
+VALUES ( 101, 'main' ) ;# 1 row affected.
+INSERT INTO Room
+VALUES ( 102, 'main' ) ;# 1 row affected.
+INSERT INTO Room
+VALUES ( 103, 'main' ) ;# 1 row affected.
 
 #COMPUTER INSERT INTO STATEMENTS
 INSERT INTO Computer VALUES(
+
+INSERT INTO Computer( computerID, iteration, motherboard, CPU, RAM, powerSupply, keyboard, mouse, GPU, DVDrom, CPUheatsink, speaker, webCamera, room_number, building_name, accessLevel, OS )
+VALUES ( 1, 1, 'Gigabyte X670 Aorus Elite AX', 'AMD Ryzen 9 7950 X', 64, 850, 'Logitech MK270 Wireless', 'Logitech M570 Wireless', NULL , 'Yes', 'Cool Master Hyper 212 Evo', NULL , NULL , 102, 'main', 2, 'Linux Ubuntu' )
