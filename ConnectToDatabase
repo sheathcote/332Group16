@@ -18,6 +18,26 @@ $create_table_1 = "CREATE TABLE Building ( building_name NVARCHAR(20)
     NOT NULL, PRIMARY KEY (Building_name));";
 
 
+//example of query with results in a table
+//Finding players that played for multiple teams
+echo "5) ". "<br>";
+$Q5 = "SELECT player, a, pim FROM Players WHERE pos = 'D' AND a>20 
+AND pim>75 AND age<30 ORDER BY a DESC, pim ASC";
+$result5 = mysqli_query($conn, $Q5);
+echo "<table border = 1>";
+if(mysqli_num_rows($result5) > 0) {
+   while ($row = mysqli_fetch_assoc($result5)) {
+      echo "<tr>";
+      echo "<td>" .$row["player"]."</td><td>".$row["a"]. "</td><td>" .$row["pim"]."</td>";
+      echo "</tr>";
+      echo "<br>";
+   }
+} else {
+   echo "0 results";
+}
+echo "<table>";
+
+
 //close connection
 mysqli_close($conn);
 ?>
