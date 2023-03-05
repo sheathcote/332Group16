@@ -1,0 +1,312 @@
+<?php
+	$servername = "mydb.itap.purdue.edu";
+	$username = "g1126566";
+	$password = "WeLoveCorn!";
+	$dbname = "g1126566";
+
+	//create connection
+	$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+	$sql = "SELECT DISTINCT computerID FROM Computer";
+    $comp_numbers = mysqli_query($con,$sql);
+
+	//check connection
+	if (!$conn) {
+		die ("Connection failed: " . mysqli_connect_error());
+	}
+	echo "Connected successfully";
+   
+   
+
+?>
+
+<html>
+<head>
+      <title>Group 16</title>
+      <link href="project.css" rel="stylesheet" type="text/css" media="screen" />			    
+</head>
+
+<!-- Accessories, Hardware, Location, power supply, dvdrom, os, access level-->
+
+<body>
+<div id="main">
+   <div class="container">
+	   <div id="header">
+		   <div id="logo">
+		   </div>
+
+    		<div id="tagline">
+        	   <h3>Computer Resources</h3>
+		   </div>
+         <div style="clear:both"></div>
+    		
+         <ul id="menu">
+           <li><a href="main.html">Home</a></li>
+           <li><a href="search.html">Search</a></li>
+           <li><a href="reservation_form.html">Reserve</a></li>
+	       </ul>
+         <div style="clear:both"></div>
+      </div>
+
+      <div id="content">
+		
+		<div id="form" class="dropdown">
+		
+		<h3>Search</h3>
+		<h5>Filter by hardware specifications, accessories, and/or location.</h5>
+		<h5>Note: to see all computers select "ALL" under computer ID number in hardware specifications</h5>
+	
+		<form id="search" method="post" action=search.php>
+		
+		<table style="position:absolute; bottom:100px;">
+			
+			<th ALIGN="center" colspan="2">Computer Specifications</th>
+			
+			<tr><td ALIGN="center">Computer ID Number:</td>
+			<td ALIGN="center">
+				<select id="compid" name="compid">
+				<option value="select">empty</option> 
+					<?php
+						while ($compid = mysqli_fetch_array(
+								$comp_numbers,MYSQLI_ASSOC)):;
+					?>
+						<option value=<?php echo $compid["computerID"];
+						?><?php echo $compid["computerID"];?>
+				</option>
+				<?php
+					endwhile;
+				?>
+				</select>
+			</td>
+			</tr>
+			<br><br>
+			
+			<tr><td ALIGN="center">Access Level</td>
+			<td ALIGN="center">
+				<select id="access" name="access">
+				<option value="select"></option>
+				<option value="levone">1</option>
+				<option value="levtwo">2</option>
+				<option value="levthree">3</option>
+				</select>
+			</td>
+			</tr>
+			<br><br>
+			
+			<tr><td ALIGN="center">Operating System</td>
+			<td ALIGN="center">
+				<select id="os" name="os">
+				<option value="select2">select</option>
+				
+				<!-- INSERT LOOP FOR COMPUTER ID's HERE -->
+				</select>
+			</td>
+			</tr>
+			<br><br>
+			
+			<tr><td ALIGN="center">CPU:</td>
+			<td ALIGN="center">
+				<select id="cpu" name="cpu">
+				<option value="select2">select</option>
+				
+				<!-- INSERT LOOP FOR COMPUTER ID's HERE -->
+				</select>
+			</td>
+			</tr>
+			<br><br>
+			
+			<tr><td ALIGN="center">CPU Heatsink</td>
+			<td ALIGN="center">
+				<select id="heat" name="heat">
+				<option value="select7">select</option>
+				
+				<!-- INSERT LOOP FOR MOTHERBOARD's HERE -->
+				</select>
+			</td>
+			</tr>
+			<br><br>
+			
+			<tr><td ALIGN="center">RAM:</td>
+			<td ALIGN="center">
+				<select id="ramstor" name="ramstor">
+				<option value="select3">select</option>
+		
+				<!-- Add permanent options? -->
+				</select>
+			</td>
+			</tr>
+			<br><br>
+			
+			<tr><td ALIGN="center">GPU:</td>
+			<td ALIGN="center">
+				<select id="gpu" name="gpu">
+				<option value="select4"></option>
+				<option value="yes">Yes</option>
+				<option value="no">No</option>
+				</select>
+			</td>
+			</tr>
+			<br><br>
+	
+			<tr><td ALIGN="center">Storage:</td>
+			<td ALIGN="center">
+				<table>
+				<tr>
+				<th id="nested">Amount</th>
+				<th id="nested">Type</th>
+				</tr>
+				<tr>
+				<td>
+				<select id="amount" name="amount">
+				<option value="select5">select</option>
+		
+				<!-- Add permanent options? -->
+				</select>
+				</td>
+				<td>
+				<select id="type" name="type">
+				<option value="select5"></option>
+				<option value="solid">Solid State Drive</option>
+				<option value="hard">Hard Disk Drive</option>
+				</select>
+				</td>
+				</tr>
+				</table>
+			</td>
+			</tr>
+			<br><br>
+			
+			<tr><td ALIGN="center">Motherboard</td>
+			<td ALIGN="center">
+				<select id="mother" name="mother">
+				<option value="select6">select</option>
+				
+				<!-- INSERT LOOP FOR MOTHERBOARD's HERE -->
+				</select>
+			</td>
+			</tr>
+			<br><br>
+			
+			
+			</table>
+			
+			
+			<!-- ACCESSORIES TABLE -->
+			
+			<table style="position:absolute; left:800px; bottom:285px;">
+			
+			
+			<th ALIGN="center" colspan="2">Accessories</th>
+			
+			<tr><td ALIGN="center">Keyboard</td>
+			<td ALIGN="center">
+				<select id="key" name="key">
+				<option value="select8">select</option>
+				
+				<!-- INSERT LOOP FOR COMPUTER ID's HERE -->
+				</select>
+			</td>
+			</tr>
+			<br><br>
+			
+			<tr><td ALIGN="center">Mouse</td>
+			<td ALIGN="center">
+				<select id="mouse" name="mouse">
+				<option value="select9">select</option>
+				
+				<!-- INSERT LOOP FOR COMPUTER ID's HERE -->
+				</select>
+			</td>
+			</tr>
+			<br><br>
+			
+			<tr><td ALIGN="center">Web Camera</td>
+			<td ALIGN="center">
+				<select id="cam" name="cam">
+				<option value="select10">select</option>
+		
+				<!-- Add permanent options? -->
+				</select>
+			</td>
+			</tr>
+			<br><br>
+			
+			<tr><td ALIGN="center">Speaker</td>
+			<td ALIGN="center">
+				<select id="speak" name="speaker">
+				<option value="select11">Speaker</option>
+		
+				<!-- Add permanent options? -->
+				</select>
+			</td>
+			</tr>
+			<br><br>
+			
+			<tr><td ALIGN="center">DVDrom</td>
+			<td ALIGN="center">
+				<select id="dvd" name="dvd">
+				<option value="select">select</option>
+				
+				<!-- INSERT LOOP FOR COMPUTER ID's HERE -->
+				</select>
+			</td>
+			</tr>
+			<br><br>
+			
+			<tr><td ALIGN="center">Power Supply</td>
+			<td ALIGN="center">
+				<select id="pwr" name="pwr">
+				<option value="select">select</option>
+				
+				<!-- INSERT LOOP FOR COMPUTER ID's HERE -->
+				</select>
+			</td>
+			</tr>
+			<br><br>
+			
+			
+			</table>
+			
+			<table style="position:absolute; left:800px; bottom:100px;">
+			
+			
+			<th ALIGN="center" colspan="2">Location</th>
+			
+			<tr><td ALIGN="center">Building</td>
+			<td ALIGN="center">
+				<select id="bldg" name="bldg">
+				<option value="select12">select</option>
+				
+				<!-- INSERT LOOP FOR COMPUTER ID's HERE -->
+				</select>
+			</td>
+			</tr>
+			<br><br>
+			
+			<tr><td ALIGN="center">Room Number</td>
+			<td ALIGN="center">
+				<select id="room" name="room">
+				<option value="select13">select</option>
+				
+				<!-- INSERT LOOP FOR COMPUTER ID's HERE -->
+				</select>
+			</td>
+			</tr>
+			<br><br>
+			
+			
+			
+			</table>
+			
+		<br><br>
+		<input type="submit" value="SEARCH" name="search">
+		</form>
+	
+	</div>
+	  
+	  </div>   
+	
+</body>
+
+
+</html>
