@@ -202,9 +202,9 @@ VALUES (4, 1), (5, 3), (6, 1), (7, 1), (8, 1), (9, 2), (10, 1),
 (21, 3), (22, 3), (23, 2), (24, 2), (25, 1), (26, 3), (27, 3), (28, 1), (29, 2), (30, 2);
 
 #Reservations INSERT INTO Statements
-INSERT INTO Reservations (reservationID, employeeID, computerID, startTime, endTime) VALUES (1, 5, 10, 2023-03-06, 2023-03-07); 
-INSERT INTO Reservations (reservationID, employeeID, computerID, startTime, endTime) VALUES (2, 9, 2, 2023-03-06, 2023-03-08);
-INSERT INTO Reservations (reservationID, employeeID, computerID, startTime, endTime) VALUES (3, 17, 15, 2023-03-07, 2023-03-10);
+INSERT INTO Reservations (reservationID, employeeID, computerID, iteration, startTime, endTime) VALUES (1, 5, 10, 1, 2023-03-06, 2023-03-07); 
+INSERT INTO Reservations (reservationID, employeeID, computerID, iteration, startTime, endTime) VALUES (2, 9, 2, 1, 2023-03-06, 2023-03-08);
+INSERT INTO Reservations (reservationID, employeeID, computerID, iteration, startTime, endTime) VALUES (3, 17, 15, 1, 2023-03-07, 2023-03-10);
 
 
 
